@@ -10,16 +10,16 @@ func main2(khobor string) {
 	bike1 := Bike{wheels: 2, color: "black", isDriving: true, breaks: 2}
 	truck1 := Truck{wheels: 10, color: "white", isDriving: false, seats: 3}
 	v1 := car1.show_mfg()
+	bike1.if_driving()
 	v2 := bike1.show_mfg()
 	v3 := truck1.show_mfg()
 
 	fmt.Println(v1, v2, v3)
 }
 
-
 type Car struct {
-	wheels int
-	color string
+	wheels    int
+	color     string
 	isDriving bool
 
 	// start() bool
@@ -28,24 +28,23 @@ type Car struct {
 }
 
 type Truck struct {
-	wheels int
-	color string
+	wheels    int
+	color     string
 	isDriving bool
-	seats int
+	seats     int
 }
 
 type Bike struct {
-	wheels int
-	color string
+	wheels    int
+	color     string
 	isDriving bool
-	breaks int
+	breaks    int
 }
 
 type Vehicle interface {
 	show_mfg() string
 	if_driving() bool
 }
-
 
 func (c Car) show_mfg() string {
 	fmt.Println(c.wheels, c)
@@ -60,4 +59,9 @@ func (t Truck) show_mfg() int {
 func (b Bike) show_mfg() int {
 	fmt.Println(b)
 	return b.breaks
+}
+
+func (b *Bike) if_driving() {
+	b.isDriving = !b.isDriving
+	fmt.Println(b)
 }
