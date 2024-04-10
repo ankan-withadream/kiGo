@@ -80,6 +80,12 @@ func main() {
 
 	log.Println(carmap)
 
+	// Slices, Basically it's array
+
+	var mydogs []string
+	mydogs = append(mydogs, "ankan")
+	mydogs = append(mydogs, "rana")
+
 }
 
 // Funcation declaration
