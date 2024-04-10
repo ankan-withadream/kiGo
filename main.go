@@ -61,6 +61,25 @@ func main() {
 
 	// Calling the function of the struct Car
 	log.Println("Care name is:", newcar.printname())
+
+	// Map Data structures
+	mymap := make(map[string]string)
+	mymap["first"] = "top1"
+	mymap["second"] = "top2"
+	log.Println(mymap)
+
+	carmap := make(map[int]Car)
+	car1 := Car{
+		name: "Buggati",
+	}
+	car2 := Car{
+		name: "BMW",
+	}
+	carmap[1] = car1
+	carmap[2] = car2
+
+	log.Println(carmap)
+
 }
 
 // Funcation declaration
