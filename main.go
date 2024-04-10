@@ -4,7 +4,16 @@ package main
 // packages inside / outside go
 import (
 	"fmt"
+	"time"
 )
+
+// Defining the struct
+type User struct {
+	Firstname string
+	Lastname  string
+	Age       int
+	DOB       time.Time
+}
 
 // Global level or package level variable
 var name string
@@ -25,6 +34,17 @@ func main() {
 	functiontakespointer(&anime)
 	// Careful observe the print
 	fmt.Println(anime)
+
+	// variable newuser created using type User
+	newuser := User{
+		Firstname: "Amit",
+		Lastname:  "Adhikari",
+		Age:       22,
+		DOB:       time.Now(),
+	}
+
+	fmt.Print(newuser)
+
 }
 
 // Funcation declaration
