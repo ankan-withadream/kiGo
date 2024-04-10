@@ -86,6 +86,14 @@ func main() {
 	mydogs = append(mydogs, "ankan")
 	mydogs = append(mydogs, "rana")
 
+	// Decision structure
+	istrue := true
+	if istrue {
+		println("True")
+	} else { //Careful else has to be on the same line
+		println("False")
+	}
+
 }
 
 // Funcation declaration
