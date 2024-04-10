@@ -107,6 +107,21 @@ func main() {
 		fmt.Println("Day not matched any")
 	}
 
+	// Loops
+	// For loops
+	for i := 0; i <= 10; i++ {
+		log.Println(i)
+	}
+	animals := []string{"Rana", "Ankan", "Suman", "Dactar"}
+
+	for i, animal := range animals {
+		println(i, animal)
+	}
+
+	for _, car := range carmap {
+		fmt.Print(car)
+	}
+
 }
 
 // Funcation declaration
