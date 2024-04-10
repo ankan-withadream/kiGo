@@ -4,6 +4,7 @@ package main
 // packages inside / outside go
 import (
 	"fmt"
+	"log"
 	"time"
 )
 
@@ -13,6 +14,15 @@ type User struct {
 	Lastname  string
 	Age       int
 	DOB       time.Time
+}
+
+type Car struct {
+	name string
+}
+
+// Function declatarion for car struct
+func (m *Car) printname() string {
+	return m.name
 }
 
 // Global level or package level variable
@@ -43,8 +53,14 @@ func main() {
 		DOB:       time.Now(),
 	}
 
-	fmt.Print(newuser)
+	fmt.Println(newuser)
 
+	newcar := Car{
+		name: "AUDI",
+	}
+
+	// Calling the function of the struct Car
+	log.Println("Care name is:", newcar.printname())
 }
 
 // Funcation declaration
