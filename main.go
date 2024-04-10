@@ -87,11 +87,24 @@ func main() {
 	mydogs = append(mydogs, "rana")
 
 	// Decision structure
+	// IF ELSE
 	istrue := true
 	if istrue {
 		println("True")
 	} else { //Careful else has to be on the same line
 		println("False")
+	}
+
+	// Switch
+	day := "Wednesday"
+	//  GO auto matically breaks the out when a condition is matched
+	switch day {
+	case "monday":
+		fmt.Println("Today is Monday")
+	case "Tuesday":
+		fmt.Println("Today is Tuesday")
+	default:
+		fmt.Println("Day not matched any")
 	}
 
 }
