@@ -20,7 +20,7 @@ func About(w http.ResponseWriter, r *http.Request) {
 // Function to Parse the html files
 func renderTemplate(w http.ResponseWriter, temp string) {
 	// Go Std. library template used to parse the html file
-	parsedTemp, _ := template.ParseFiles("./templates/" + temp)
+	parsedTemp, _ := template.ParseFiles("./templates/"+temp, "./templates/layout/base.layout.tmpl")
 	err := parsedTemp.Execute(w, nil)
 	if err != nil {
 		fmt.Println("Error parshing the template", err)
