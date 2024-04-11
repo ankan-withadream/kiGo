@@ -6,18 +6,24 @@ import (
 	"net/http"
 )
 
+const PORT = ":8080"
+
+// Home Route handler
+func Home(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Home page.")
+}
+
+// About Route handler
+func About(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "About page.")
+}
+
 func main() {
 
 	// A base url to define the path
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		n, err := fmt.Fprintf(w, "Hello world")
-		if err != nil {
-			fmt.Println(err)
-		}
-		fmt.Println(fmt.Sprintf("No of Bytes written:%d", n))
-
-	})
+	http.HandleFunc("/", Home)
+	http.HandleFunc("/about", About)
 
 	// http request listener
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(PORT, nil)
 }
