@@ -2,19 +2,19 @@ package main
 
 import (
 	// Std library to handel http request on Go
-	"net/http"
-
-	"simplehttp/src/handlers"
+	"github.com/gofiber/fiber/v3"
 )
 
 const PORT = ":8080"
 
 func main() {
 
-	// A base url to define the path
-	http.HandleFunc("/", handlers.Home)
-	http.HandleFunc("/about", handlers.About)
+	app := fiber.New()
+
+	app.Get("/", func(c fiber.Ctx) error {
+		return c.SendString("Hello, World!")
+	})
 
 	// http request listener
-	http.ListenAndServe(PORT, nil)
+	app.Listen(PORT)
 }
