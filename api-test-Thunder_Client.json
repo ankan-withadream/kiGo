@@ -1,0 +1,21 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "kiGo",
+    "dateExported": "2024-04-19T12:43:44.014Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "7e3a67bf-80ba-4fd8-93df-0115d78719e8",
+            "colId": "033b4574-d3df-41d9-83aa-9b7052b2d90d",
+            "containerId": "",
+            "name": "general testing",
+            "url": "localhost:8080/api",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-04-19T12:42:06.821Z",
+            "modified": "2024-04-19T12:42:41.788Z",
+            "headers": []
+        }
+    ]
+}
