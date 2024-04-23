@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"kiGo/config"
 	"net/http"
 )
 
@@ -14,7 +15,7 @@ func main() {
 
 	go func() {
 
-		err := http.ListenAndServe(":"+fmt.Sprint(API_PORT), mux)
+		err := http.ListenAndServe(":"+fmt.Sprint(config.APP_CONFIG.API_PORT), mux)
 		if err != nil {
 			fmt.Println("err")
 			fmt.Println(err)
