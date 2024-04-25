@@ -3,10 +3,9 @@ package main
 import (
 	"net/http"
 
+	"github.com/ankan-withadream/kiGo/config"
 	"github.com/gin-gonic/gin"
 )
-
-var PORT = ":8080"
 
 // Demo struct of Book
 type Book struct {
@@ -119,5 +118,5 @@ func main() {
 	})
 
 	// Gin Server run on mentioned Port
-	router.Run(PORT)
+	router.Run(config.PORT)
 }
