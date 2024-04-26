@@ -1,4 +1,4 @@
-package utills
+package services
 
 import (
 	"bytes"

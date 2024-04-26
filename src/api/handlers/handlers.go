@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"kiGo/config"
-	"kiGo/src/utills"
+	"kiGo/internal/config"
+	"kiGo/src/services"
 	"net/http"
 )
 
@@ -40,14 +40,14 @@ func Handle_kigo(w http.ResponseWriter, r *http.Request) {
 		}
 
 		// json to payload data
-		data := &utills.Payload{}
+		data := &services.Payload{}
 		err = json.Unmarshal(jsondata, data)
 		if err != nil {
 			fmt.Errorf("Error parsing json data: ", err)
 		}
 
 		// request to AI server and get response
-		resp, err := utills.Ask_AI(config.APP_CONFIG.AI_CLIENT_API_ENDPOINT, data, aiclient)
+		resp, err := services.Ask_AI(config.APP_CONFIG.AI_CLIENT_API_ENDPOINT, data, aiclient)
 		if err != nil {
 			fmt.Errorf("Error from the AI server: ", err)
 		}

@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"kiGo/config"
+	"kiGo/internal/config"
+	"kiGo/src/routers"
 	"net/http"
 )
 
@@ -11,7 +12,7 @@ func main() {
 	// http.HandleFunc("/kigo", handlers.handle_kigo)
 	// http.HandleFunc("/", handlers.Main_handler)
 	mux := http.NewServeMux()
-	main_route_register(mux)
+	routers.Main_route_register(mux)
 
 	go func() {
 
