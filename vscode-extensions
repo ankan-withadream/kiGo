@@ -1,4 +1,3 @@
-code --install-extension Extensions installed on SSH: ankanwithadream-kigo-czwwv40p253.vss.gitpod.io:
 code --install-extension albert.tabout
 code --install-extension bodil.file-browser
 code --install-extension christian-kohler.path-intellisense
