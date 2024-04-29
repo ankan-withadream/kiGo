@@ -23,7 +23,7 @@ var books = map[string]Book{
 
 // main is the entry point of the application.
 // It initializes the Gin router and sets up the HTTP endpoints for CRUD operations on books.
-func main() {
+func main2_NOT_NEEDED() {
 	// Initialize of Gin router
 	router := gin.Default()
 

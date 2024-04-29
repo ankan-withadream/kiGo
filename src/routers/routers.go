@@ -2,17 +2,27 @@ package routers
 
 import (
 	"kiGo/src/api/handlers"
-	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
-func Main_route_register(mux *http.ServeMux) {
-	register_API_routes(mux)
-}
+func InitRouter() *gin.Engine {
+	mainRouter := gin.New()
 
-// Register API routes here
-func register_API_routes(mux *http.ServeMux) {
+	mainRouter.Use(gin.Logger())
+	mainRouter.Use(gin.Recovery())
 
-	mux.HandleFunc("/api/", handlers.Handle_empty)
-	mux.HandleFunc("/api/kigo", handlers.Handle_kigo)
+	apiV1Router := mainRouter.Group("/api")
 
+	{
+
+		apiV1Router.GET("/", handlers.Handle_empty)
+		apiV1Router.POST("/", handlers.Handle_empty)
+
+		apiV1Router.GET("/kigo", handlers.Handle_kigo)
+		apiV1Router.POST("/kigo", handlers.Handle_kigo)
+
+	}
+
+	return mainRouter
 }

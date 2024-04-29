@@ -1,0 +1,73 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "kiGo",
+    "collectionId": "27394ad7-7346-40f3-9f57-15bd9faf8931",
+    "dateExported": "2024-04-22T12:01:13.945Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "78fe6bc6-a231-4387-a007-83ff4af84975",
+            "colId": "27394ad7-7346-40f3-9f57-15bd9faf8931",
+            "containerId": "",
+            "name": "general testing",
+            "url": "localhost:8080/api",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-04-22T10:28:21.062Z",
+            "modified": "2024-04-22T10:28:21.062Z",
+            "headers": []
+        },
+        {
+            "_id": "761c2bb1-f5c3-465a-a28a-4b8c53d06277",
+            "colId": "27394ad7-7346-40f3-9f57-15bd9faf8931",
+            "containerId": "",
+            "name": "FreeTherapy-Ai",
+            "url": "https://www.freeaitherapist.com/api/message",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-04-22T10:29:00.026Z",
+            "modified": "2024-04-22T10:33:00.071Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"therapist\",\n      \"content\": \"Hello, I am your therapist. How have you been feeling lately?\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"gg\"\n    },\n    {\n      \"role\": \"therapist\",\n      \"content\": \"It's great to hear that you've been feeling good lately, Ankan! It's important to acknowledge and celebrate the positive moments in life. Here are some questions to help you explore your thoughts and feelings:1. What are some things that have been making you feel happy or fulfilled lately?2. How have you been managing stress or challenges that come your way?3. Are there any areas of your life where you feel like you could use some support or improvement?4. What are some ways that you can start working towards those improvements, even if they seem small at first?\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \":(\"\n    }\n  ],\n  \"profile\": {\n    \"name\": \"Ankan\",\n    \"age\": \"22\",\n    \"gender\": \"male\",\n    \"job\": \"\",\n    \"familyBackground\": \"asdfdasfdasf\",\n    \"friendsBackground\": \"asfdasdfdsafasdf\",\n    \"anythingElse\": \"asdfsadfsadf csdaafsd \"\n  }\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "6gY7cbfZy7ezm2JZpyBexvnjRKQZQ3yJZaVMT4hNE5ZGvdQXKtvHYmx-6tQB_YfZXGvKSQPdELR4tEUSf2J_NA"
+}
+
+
+
+SAMPLE POST TO AICLIENT
+{
+    "messages": [
+      {
+        "role": "therapist",
+        "content": "Hello, I am your therapist. How have you been feeling lately?"
+      },
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "therapist",
+        "content": "It's great to hear from you, ank! I'm glad you're here. It sounds like you have a lot going on in your life. It's important to take some time to reflect on how you're feeling and what might be causing those feelings. When you have a moment, can you tell me a little bit about what's been going on lately and how it has been affecting your mood?"
+      },
+      {
+        "role": "user",
+        "content": "I am dont know"
+      }
+    ],
+    "profile": {
+      "name": "ank",
+      "age": "22",
+      "gender": "male",
+      "job": "",
+      "familyBackground": "dgfa dfs ",
+      "friendsBackground": "dsf adf",
+      "anythingElse": ""
+    }
+  }

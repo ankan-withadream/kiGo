@@ -1,0 +1,14 @@
+code --install-extension albert.tabout
+code --install-extension bodil.file-browser
+code --install-extension christian-kohler.path-intellisense
+code --install-extension deerawan.vscode-faker
+code --install-extension dunstontc.vscode-go-syntax
+code --install-extension github.vscode-pull-request-github
+code --install-extension gitpod.gitpod-remote-ssh
+code --install-extension golang.go
+code --install-extension msyrus.go-doc
+code --install-extension rangav.vscode-thunder-client
+code --install-extension redhat.vscode-yaml
+code --install-extension visualstudioexptteam.intellicode-api-usage-examples
+code --install-extension visualstudioexptteam.vscodeintellicode
+code --install-extension windmilleng.vscode-go-autotest
