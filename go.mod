@@ -1,4 +1,4 @@
-module kiGo
+module github.com/ankan-withadream/kiGo
 
 go 1.22.0
 
