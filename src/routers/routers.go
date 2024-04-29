@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"kiGo/src/api/handlers"
+	"github.com/ankan-withadream/kiGo/src/api/handlers"
 
 	"github.com/gin-gonic/gin"
 )

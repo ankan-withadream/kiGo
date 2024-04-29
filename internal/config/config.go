@@ -1,6 +1,11 @@
 package config
 
-import "time"
+import (
+	"fmt"
+	"time"
+
+	"github.com/joho/godotenv"
+)
 
 type Config struct {
 	API_PORT               int
@@ -14,4 +19,11 @@ var APP_CONFIG = Config{
 	AI_CLIENT_API_ENDPOINT: "https://www.freeaitherapist.com/api/message",
 	ReadTimeout:            10 * time.Second,
 	WriteTimeout:           10 * time.Second,
+}
+
+func Init_env() {
+	err := godotenv.Load()
+	if err != nil {
+		fmt.Println("Error getting env files: ", err)
+	}
 }
