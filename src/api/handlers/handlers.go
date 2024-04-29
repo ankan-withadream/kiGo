@@ -4,9 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"kiGo/internal/config"
-	"kiGo/src/services"
 	"net/http"
+
+	"github.com/ankan-withadream/kiGo/src/services"
+
+	"github.com/ankan-withadream/kiGo/internal/config"
 
 	"github.com/gin-gonic/gin"
 )

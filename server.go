@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
-	"kiGo/internal/config"
-	"kiGo/src/routers"
 	"net/http"
+
+	"github.com/ankan-withadream/kiGo/internal/config"
+	"github.com/ankan-withadream/kiGo/internal/db"
+	"github.com/ankan-withadream/kiGo/src/routers"
 )
 
 func main() {
@@ -13,6 +15,11 @@ func main() {
 	// http.HandleFunc("/", handlers.Main_handler)
 	// mux := http.NewServeMux()
 	// routers.Main_route_register(mux)
+	config.Init_env()
+
+	db_pgx := db.Init_DB()
+	fmt.Println(db_pgx)
+
 	router := routers.InitRouter()
 
 	server := &http.Server{
