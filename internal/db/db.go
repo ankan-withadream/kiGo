@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/ankan-withadream/kiGo/src/api/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -29,6 +30,15 @@ func Init_DB() *gorm.DB {
 	DB = database
 
 	fmt.Println("DB connected successfully")
+
+	if err = DB.AutoMigrate(&models.Chatroom{}); err != nil {
+		panic("Failed to migrate database")
+	}
+
+	return DB
+}
+
+func Get() *gorm.DB {
 
 	return DB
 }

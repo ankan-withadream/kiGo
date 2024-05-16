@@ -17,8 +17,8 @@ func main() {
 	// routers.Main_route_register(mux)
 	config.Init_env()
 
-	db_pgx := db.Init_DB()
-	fmt.Println(db_pgx)
+	DB_pgx := db.Init_DB()
+	fmt.Println(DB_pgx)
 
 	router := routers.InitRouter()
 

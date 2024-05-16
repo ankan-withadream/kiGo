@@ -17,7 +17,7 @@ type Message struct {
 // Profile represents the user's profile
 type Profile struct {
 	Name              string `json:"name"`
-	Age               string `json:"age"` // Age as string based on your payload, consider changing to int if possible
+	Age               string `json:"age"`
 	Gender            string `json:"gender"`
 	Job               string `json:"job"`
 	FamilyBackground  string `json:"familyBackground"`

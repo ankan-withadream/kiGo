@@ -6,9 +6,10 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/ankan-withadream/kiGo/src/services"
-
 	"github.com/ankan-withadream/kiGo/internal/config"
+	"github.com/ankan-withadream/kiGo/internal/db"
+	"github.com/ankan-withadream/kiGo/src/api/models"
+	"github.com/ankan-withadream/kiGo/src/services"
 
 	"github.com/gin-gonic/gin"
 )
@@ -62,4 +63,11 @@ func Handle_kigo(c *gin.Context) {
 		c.JSON(http.StatusOK, resp)
 
 	}
+}
+
+func Handle_allChats(c *gin.Context) {
+	db := db.Get()
+	chatrooms := &models.Chatroom{}
+	db.Limit(10).Find(chatrooms)
+	c.JSON(http.StatusOK, chatrooms)
 }
