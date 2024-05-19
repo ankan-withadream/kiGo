@@ -23,6 +23,8 @@ func InitRouter() *gin.Engine {
 		apiV1Router.POST("/kigo", handlers.Handle_kigo)
 
 		apiV1Router.GET("/chats", handlers.Handle_allChats)
+
+		apiV1Router.GET("/ws", handlers.Handle_WS)
 	}
 
 	return mainRouter

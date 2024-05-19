@@ -12,3 +12,35 @@ code --install-extension redhat.vscode-yaml
 code --install-extension visualstudioexptteam.intellicode-api-usage-examples
 code --install-extension visualstudioexptteam.vscodeintellicode
 code --install-extension windmilleng.vscode-go-autotest
+
+
+SAMPLE POST TO AICLIENT
+{
+    "messages": [
+      {
+        "role": "therapist",
+        "content": "Hello, I am your therapist. How have you been feeling lately?"
+      },
+      {
+        "role": "user",
+        "content": "hi"
+      },
+      {
+        "role": "therapist",
+        "content": "It's great to hear from you, ank! I'm glad you're here. It sounds like you have a lot going on in your life. It's important to take some time to reflect on how you're feeling and what might be causing those feelings. When you have a moment, can you tell me a little bit about what's been going on lately and how it has been affecting your mood?"
+      },
+      {
+        "role": "user",
+        "content": "I am dont know"
+      }
+    ],
+    "profile": {
+      "name": "ank",
+      "age": "22",
+      "gender": "male",
+      "job": "",
+      "familyBackground": "dgfa dfs ",
+      "friendsBackground": "dsf adf",
+      "anythingElse": ""
+    }
+  }

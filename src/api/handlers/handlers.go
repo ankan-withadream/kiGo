@@ -67,7 +67,20 @@ func Handle_kigo(c *gin.Context) {
 
 func Handle_allChats(c *gin.Context) {
 	db := db.Get()
-	chatrooms := &models.Chatroom{}
-	db.Limit(10).Find(chatrooms)
+	chatrooms := []models.Chatroom{}
+	db.Find(&chatrooms)
 	c.JSON(http.StatusOK, chatrooms)
+
+}
+
+func Handle_latestChats(c *gin.Context) {
+	db := db.Get()
+	chatrooms := []models.Chatroom{}
+	db.Limit(10).Find(&chatrooms)
+	c.JSON(http.StatusOK, chatrooms)
+
+}
+
+func Handle_WS(c *gin.Context) {
+	services.Serve_chat_ws(c)
 }
