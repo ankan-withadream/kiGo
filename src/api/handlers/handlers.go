@@ -82,5 +82,6 @@ func Handle_latestChats(c *gin.Context) {
 }
 
 func Handle_WS(c *gin.Context) {
-	services.Serve_chat_ws(c)
+	hub := services.New_hub()
+	services.Serve_chat_ws(c, hub)
 }
