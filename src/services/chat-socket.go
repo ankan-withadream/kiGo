@@ -37,6 +37,8 @@ func Serve_chat_ws(c *gin.Context, hub *Hub) {
 	}
 	defer conn.Close()
 
+	go read_pump(hub)
+	go write_pump(hub)
 }
 
 func read_pump(hub *Hub) {
@@ -44,14 +46,21 @@ func read_pump(hub *Hub) {
 	for {
 		for _, conn := range hub.conections {
 
-			_, messages, err = conn.ReadMessage()
+			if conn == nil {
+				continue
+			}
+
+			var msgs []*models.Message
+			err := conn.ReadJSON(&msgs)
 			if err != nil {
 				fmt.Println("error reading connection message: ", err)
+				continue
+			} else {
+				fmt.Println("Read connection messages: ", msgs)
 			}
-			
-			for _, message := range messages {
-				append(hub.messageQueue, message)
-			}
+
+			// assuming conn.ReadJSON() will return a slice of models.Message
+			hub.messageQueue = append(hub.messageQueue, msgs...)
 
 		}
 	}
@@ -60,6 +69,20 @@ func read_pump(hub *Hub) {
 func write_pump(hub *Hub) {
 	for {
 		for _, message := range hub.messageQueue {
+			if message == nil {
+				continue
+			}
+
+			receiverConn, ok := hub.conections[message.Receiver_id]
+			if !ok || receiverConn == nil {
+				continue
+			}
+
+			err := receiverConn.WriteJSON(message)
+			if err != nil {
+				fmt.Println("error writing receiver message: ", err)
+				continue
+			}
 
 		}
 	}

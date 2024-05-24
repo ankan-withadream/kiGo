@@ -9,7 +9,7 @@ type Chatroom struct {
 }
 
 type Message struct {
-	sender_id   string
-	receiver_id string
-	message     string
+	Sender_id   string
+	Receiver_id string
+	Message     string
 }
