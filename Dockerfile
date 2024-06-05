@@ -1,26 +1,26 @@
-# Stage 1: Build
-FROM golang:1.17 as builder
-WORKDIR /app
-COPY go.mod go.sum ./
-RUN go mod download
+# Start from the latest golang base image
+FROM golang:latest
+
+# Add Maintainer Info
+LABEL maintainer="Ankan Sarkar <ankanwithadream@gmail.com>"
+
+# Set the Current Working Directory inside the container
+WORKDIR /
+
+# Copy the source from the current directory to the Working Directory inside the container
 COPY . .
+
+# Disable Go Modules
+ENV GO111MODULE=off
+
+# Build the Go app
 RUN go build -o main .
 
-# Stage 2: Package
-FROM gcr.io/distroless/static:1.5.2
-WORKDIR /app
-COPY --from=builder /app/main /app/main
-CMD ["./main"]
-
-# Expose port 8080
+# Expose port 8080 to the outside world
 EXPOSE 8080
 
-# Set entrypoint
-ENTRYPOINT ["/app/main"]
-
-# Set healthcheck
-HEALTHCHECK --interval=10s --timeout=5s CMD curl -f http://localhost:8080/health || exit 1
-
+# Command to run the executable
+CMD ["./main"]
 
 
 
