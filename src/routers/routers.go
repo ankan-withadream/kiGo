@@ -2,6 +2,7 @@ package routers
 
 import (
 	"github.com/ankan-withadream/kiGo/src/api/handlers"
+	"github.com/gin-contrib/cors"
 
 	"github.com/gin-gonic/gin"
 )
@@ -11,6 +12,7 @@ func InitRouter() *gin.Engine {
 
 	mainRouter.Use(gin.Logger())
 	mainRouter.Use(gin.Recovery())
+	mainRouter.Use(cors.Default())
 
 	apiV1Router := mainRouter.Group("/api")
 
