@@ -24,7 +24,9 @@ func InitRouter() *gin.Engine {
 		apiV1Router.GET("/kigo", handlers.Handle_kigo)
 		apiV1Router.POST("/kigo", handlers.Handle_kigo)
 
-		apiV1Router.GET("/chats", handlers.Handle_allChats)
+		apiV1Router.GET("/chats/all", handlers.Handle_allChats)
+		apiV1Router.GET("/chats/latest", handlers.Handle_latestChats)
+		apiV1Router.POST("/chats/add", handlers.Handle_addNewMessage)
 
 		apiV1Router.GET("/ws", handlers.Handle_WS)
 	}

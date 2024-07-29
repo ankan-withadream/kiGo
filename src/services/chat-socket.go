@@ -10,7 +10,7 @@ import (
 )
 
 type Hub struct {
-	conections   map[string]*websocket.Conn
+	conections   map[int]*websocket.Conn
 	messageQueue []*models.Message
 }
 
@@ -24,7 +24,7 @@ var upgrader = websocket.Upgrader{
 
 func New_hub() *Hub {
 	return &Hub{
-		conections:   make(map[string]*websocket.Conn),
+		conections:   make(map[int]*websocket.Conn),
 		messageQueue: make([]*models.Message, 100),
 	}
 }

@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -12,6 +13,8 @@ import (
 	"github.com/ankan-withadream/kiGo/src/services"
 
 	"github.com/gin-gonic/gin"
+
+	"gorm.io/gorm"
 )
 
 var aiclient = &http.Client{}
@@ -84,4 +87,67 @@ func Handle_latestChats(c *gin.Context) {
 func Handle_WS(c *gin.Context) {
 	hub := services.New_hub()
 	services.Serve_chat_ws(c, hub)
+}
+
+func Handle_addNewMessage(c *gin.Context) {
+	var message models.Message
+	if err := c.BindJSON(&message); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": fmt.Sprintf("Error parsing JSON: %v", err)})
+		return
+	}
+
+	db := db.Get()
+	var chatroom models.Chatroom
+	if err := db.First(&chatroom, models.Chatroom{Sender_id: message.Sender_id, Receiver_id: message.Receiver_id}).Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			chatroom = createNewChatroom(db, &message)
+		} else {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": fmt.Sprintf("Error retrieving chatroom: %v", err)})
+			return
+		}
+	}
+
+	chatroom.Messages_recent = &message.Message
+
+	chatroom.Messages_backup = append(chatroom.Messages_backup, models.MessageBackup{
+		IsSender: message.Sender_id == chatroom.Sender_id,
+		Message:  message.Message,
+	})
+
+	if err := db.Save(&chatroom).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": fmt.Sprintf("Error saving chatroom: %v", err)})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Message added to chatroom"})
+}
+
+func createNewChatroom(db *gorm.DB, message *models.Message) models.Chatroom {
+	if message == nil || message.Message == "" {
+		panic("message cannot be nil")
+	}
+
+	var sender models.User
+	if err := db.Where("UserID = ?", message.Sender_id).First(&sender).Error; err != nil {
+		panic(fmt.Sprintf("failed to get sender user: %v", err))
+	}
+
+	var receiver models.User
+	if err := db.Where("UserID = ?", message.Receiver_id).First(&receiver).Error; err != nil {
+		panic(fmt.Sprintf("failed to get receiver user: %v", err))
+	}
+
+	chatroom := models.Chatroom{
+		Sender_id:       message.Sender_id,
+		Sender_name:     &sender.Name,
+		Receiver_id:     message.Receiver_id,
+		Receiver_name:   &receiver.Name,
+		Messages_recent: &message.Message,
+		Messages_backup: []models.MessageBackup{{IsSender: true, Message: message.Message}},
+	}
+
+	if err := db.Create(&chatroom).Error; err != nil {
+		panic(fmt.Sprintf("failed to create chatroom: %v", err))
+	}
+	return chatroom
 }
